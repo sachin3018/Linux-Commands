@@ -1,0 +1,93 @@
+> (redirect) :- it use to use the output in other command.
+	eg: echo "hello there" > new.txt
+		output:
+			cat new.txt
+			hello there
+
+
+>> (append) : work like redirect but add data to existing file without overriding.
+	echo "hello there sachin" > new.txt
+		output:
+			cat new.txt
+			hello there
+			hello there sachin
+
+concatinate twon files :
+		eg: cat file1.txt file2.txt
+		    {one file after one file}
+**it is important when we want to copy data of two file into one file.
+
+
+tail : display content from end:- 
+	syntax:
+		tail -(no. of line want to display) filename
+head : display content from start:-
+	syntax:
+		head -(no. of line want to display) filename
+
+pipe  :- using of one command output in input of second command.
+	syntax:-
+		command1 | command2
+		eg:-
+		let assume a folder a
+			:-	ls a/ | less
+
+find : use to find file .
+	syntax:-
+		find (location were to find) (name of file want to find)
+		eg:-
+			find a sac.txt
+		**in output it return the path of the file.
+
+	syntax:-
+		find (location were to find) -name (name of file want to find)
+		eg:-
+			find a -name sac.txt
+		**in output it return the path of the file.
+
+	syntax:-
+		find (location were to find) -type d
+		eg:-
+			find a -type d
+		**in output it return the path of all the directories present inside that location.
+
+grep :- use to grab the word from any file.this return the word if the given word appear in it.
+	syntax :-
+		grap (word) (file name)
+		**this is a case sensitive.
+
+		but if we use:-  "grep -i" instead of "grep" it ignore cases.
+
+		grep -v (word) filename :- it return the all data which is NOT containing the word in command.
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+AWK
+
+
+awk :-works for the table related data.
+	syntax:
+		awk '{print}' filename or awk '{print $0}' filename: to print complete data of the file.
+		awk '{print $1 $2}' filename : to concatinate data of colume 1 and 2 and print.
+		awk '{print $1,$2}' filename : to print data of coloumn 1 and 2 without concatination.
+		awk 'NR==row number {print $0}' filename: to print perticular row.
+		awk '{print $NR}' filename : to print thr last row.
+		awk '{print $(NR-i)}' filename: to print perticular row from the last.
+		awk 'NR==i,NR==j{print $0}' filename :from i to j is the limit of row to print.
+		awk 'NR==i;NR==j{print $0}' filename : only print i and j row.
+  case 2 :- let the data is written in continuous format with a PERTICULAR SEPRATOR to print according to seprator :
+	syntax:
+		awk -F "seprator" '{print }' filename:
+			for all above case operation just add :-   -F "seprator" 
+
+  case 3 :- when we have to find a perticular word in the table.
+	syntax :
+		awk '/word which want to find/{print}' filename : all data will display which have that word in row.
+		awk '/word which want to find| second word/{print}' filename :- | or operator
+		awk '$i~/word which want to find/{print}' filename : for perticular row .
+	**
+	awk '{print length($i)}' filename :-length of perticular columne of each row.
+
+----------------------------------------------------------------------------------------------------------------------
+
