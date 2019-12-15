@@ -1,0 +1,113 @@
+EXERCISE-1
+
+Part A
+-List the content of your Home Folder
+-List all the content of  folders that strts with "S" (capital)
+( if you don't have any, choose another letter )
+-Iside your pwd. Get a list of all the files or folders that 
+has an "S" in their name
+( again, if you don't have any, choose another letter )
+
+solution :
+	1)ls
+	2)ls S*
+	3)ls | grep S 
+
+Part B
+-Create a file "info-txt"  in your present working directory.
+-Inside "info-txt" write the long list information about
+the last 4 files listed in your pwd
+
+solution :
+	1)touch info.txt
+	2)ls -l |tail -1 >> info.txt
+
+-----------------------------------------------------------------------------
+EXERCISE-2
+
+Part A
+-Create a file "hello.txt"  in your present working directory.
+-Rename it as "hello .sh"
+-Make this file executable only by the owner
+
+
+solution:
+	1)touch hello.txt
+	2)mv hello.txt hello.sh
+	3)chmod u=x hello.sh
+
+
+Part B
+-Read from imput a name of a file (invented by who is typing )
+and save it inside a variable
+-Create a file with that name using the variable 
+-Create a file with that name and the prefix "1_" attached in front of it
+
+solution:
+	1)read -p "enter the name of the file : " name
+	2)touch $name
+	3)touch 1${name}
+	
+
+Part C 
+
+In this Exercise we  focus on the difference between
+variable expansion and command substitution.
+Let's say that we want to record the exact time when we did
+something in the terminal.
+
+-Store the actual date and time using a variabe "important_time"
+and check it
+-Create a Variable "dd"  that execute the command "date". and 
+check it
+
+What is the difference between $imp_date  and   $dd  ?
+
+
+solution:
+	a)to save a perticular imp date in a variable
+		1)imp_date=$(date)
+		2)echo $dd
+	
+	b)variable to exicute date command :
+		1)dd=date
+		2)$dd
+
+	the difference between these two are ,
+		a)every time we have to run both 1 and 2 to change the value of imp_date,
+		b)$dd is sufficient to get the current date
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+					ExerCise of ShellScript:-
+
+
+EXERCISE-1
+
+Create a Script that does the following:
+
+-Create  2 .txt files: "1.txt" "2.txt"
+-Inside 1.txt write the content of your pwd. in the long list format
+-Ask the user what prefix he wants to give to the file "1.txt"
+-Change the name of "1.txt" adding to it the prefix choosen by the user
+
+
+solution:
+		1)touch 1.txt 2.txt
+		2)echo $(pwd) > 1.txt
+		3)read -p "what prefix want to give to file 1.txt" prefix
+		4)mv 1.txt  ${prefix}1.txt
+
+-----------------------------------------------------------------------------
+
+EXERCISE-2
+
+Create a script that create an executable Script
+whose name is decided by the user 
+
+solution :
+		1)gedit filename.sh
+		//write in open editor
+			read -p "enter the name of shell script file you want to create :" filename
+			touch filename.sh

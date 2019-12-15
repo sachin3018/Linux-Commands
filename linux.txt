@@ -90,4 +90,132 @@ awk :-works for the table related data.
 	awk '{print length($i)}' filename :-length of perticular columne of each row.
 
 ----------------------------------------------------------------------------------------------------------------------
+sudo
 
+	if we want to edit a file which have not the permission to edit. so here we have two way
+		i)change the owner
+		ii)sudo :-command before any command.to over rite the permission.
+
+		example:- sudo nano filename.txt
+	*if we create the file in root folder.
+
+	test :- sudo bash :- it changes the root folder name.
+
+owner change :
+		syntax:
+			sudo chown new_ownername filename
+
+change group :
+		syntax:
+			sudo chgrp new_groupname filename
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+to change the permission in linux we use :-
+
+chmod
+
+	u :-user	r :-read
+	g :-guest	w :-write
+	o :-other	x :-exicutable
+
+	syntax :-
+		chmod u=rw filename :- when we want to give user permission of read and write.
+
+shotcut for giving exicutable permission :
+	syntax
+		chmod +x filename
+
+--------------------------------------------------------------------------------------------------------------------------
+
+variable
+	syntax:
+		variable_name="value want to assign"
+		eg:-
+			a=5 
+			a="sachin"
+	when want to access the value of variable place $ sign before the name;
+	eg
+			a=5
+			echo $a or 
+			   or
+			echo ${a}   :-here benfit is you can conacatinate  the value to the variable.
+
+   **use command output  in the variable :
+		eg :-
+			a=$(pwd)
+			echo $a  
+			  or
+			echo ${a} :- :-here benfit is you can conacatinate  the value to the variable.
+
+ user input to the variable:
+	syntax :-
+		read variable_name
+	
+	*let the user know which value they have to write .
+		syntax :
+			read -p "message want to display before input " variable_name
+
+	*want to hide what you are writing due to privacy reasons .
+		eg: we want to write the password .
+		syntax :
+			read -s variable_name
+
+	*want to hide what you are writing due to privacy reasons and the user know which value they have to write
+		syntax :
+			read -sp "message want to disaplay before input " variable_name
+
+direct running command through the variable :
+		syntax
+			1)variable_name=command_want_to_store
+			2)$variable_name
+			eg :-
+				1)a=date
+				  $a
+				2)b=pwd
+				  $b
+
+---------------------------------------------------------------------------------------------------------------------------
+UNIX Login:
+	if we declare a variable in terminal and after re opening of the terminal we are not able to access the variable value
+	because it is temprory in the terminal .
+	to use the value of that variable we have to create that in the ".bashrc" file of the linux which run very first just 
+	after the opening of the terminal.
+
+---------------------------------------------------------------------------------------------------------------------------
+** when you want to know the place were command is stored use    which command
+		synatax
+			which command_name
+			eg :-
+				which ls
+				which pwd
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+.bashrc main change karo:
+
+	PATH="bash wala folder ka location:${PATH}"
+	export PATH
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+to check if string is empty or not :
+		read -p "enter the string" str
+		if[ -z "$str" ];then
+			echo "empty"
+		fi
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+for searching of files.
+	eg
+		-e $myfile : file exist or not.
+		! -e $myfile : file not exist.
+		-d $myfile : 
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+exit code :
+
+	
